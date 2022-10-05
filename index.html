@@ -36,6 +36,15 @@
         width: 50px !important;
         height: 50px !important;
       }
+      .f2 {
+        position: absolute;
+        left: calc(85% - 1.5rem);
+        top: calc(90% - 1.5rem);
+        font-size: 3rem;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 0 0.5rem #000;
+      }
     </style>
   </head>
   <body>
@@ -53,6 +62,7 @@
         />
         <img id="bgImg" />
       </div>
+      <p class="f2" id="secs"></p>
     </div>
   </body>
   <script>
@@ -86,8 +96,28 @@
       }
     }
     /* Trash para cambiar de imagen */
-    let imagenes = ["./1.gif", "./2.gif", "./3.gif", "./4.gif"];
+    let imagenes = [
+      ["./1.gif", 1700],
+      ["./2.gif", 9710],
+      ["./3.gif", 1700],
+      ["./4.gif", 3550],
+    ];
+    let pos = 0;
     let bgImg = document.getElementById("bgImg");
-    bgImg.src = imagenes[Math.floor(Math.random() * imagenes.length)];
+    function cambiar() {
+      if (pos >= imagenes.length) {
+        pos = 0;
+      }
+      bgImg.src = imagenes[pos][0];
+      setTimeout(cambiar, imagenes[pos][1] - 100);
+      pos++;
+    }
+    cambiar();
+    let secs = document.getElementById("secs");
+    /* Actualizo los segundos  */
+    setInterval(() => {
+      secs.innerHTML = ` ${Math.floor(diff / 1000)}s`;
+      diff -= 1000;
+    }, 1000);
   </script>
 </html>
