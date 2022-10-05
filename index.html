@@ -40,11 +40,11 @@
     let days = Math.ceil(diff / (1000 * 60 * 60 * 24));
     let months = Math.ceil(days / 30);
     if (days % 30 > 0) {
-      falta.innerHTML = `Faltan menos de ${months} meses para el 2022`;
+      falta.innerHTML = `Faltan menos de ${months} meses para el ${date.getFullYear()}`;
     } else if (days % 30 == 0) {
-      falta.innerHTML = `Faltan ${months} meses para el 2022`;
+      falta.innerHTML = `Faltan ${months} meses para el ${date.getFullYear()}`;
     } else {
-      falta.innerHTML = `Faltan ${days} días para el 2022`;
+      falta.innerHTML = `Faltan ${days} días para el ${date.getFullYear()}`;
     }
   </script>
 </html>
